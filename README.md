@@ -1,7 +1,5 @@
 # The Sky Watch — a loop that runs while you sleep
 
-**Loop Engineering, Concept 6 — unattended schedules.**
-
 Every morning before you wake, a machine that isn't yours checks the sky and
 leaves you a note: which asteroids are coming toward Earth in the next week, and
 whether any of them are worth worrying about.
@@ -9,66 +7,6 @@ whether any of them are worth worrying about.
 You start it once. After that it runs on a clock, with your laptop shut, whether
 or not anything is happening up there.
 
-## How this differs from the other three
-
-The [ISS project](../iss-loop/) runs on **your** laptop and dies when you close
-the terminal. This one runs on a schedule, on someone else's machine, and keeps
-going while you sleep. That is the whole concept, in one contrast:
-
-|                      | You start it  | It stops when                        |
-| -------------------- | ------------- | ------------------------------------ |
-| In-session (`/loop`) | you type      | you close the terminal               |
-| **Scheduled (this)** | **the clock** | **you cancel it — never on its own** |
-
-And unlike the [Doorbell](../doorbell/), which reacts _after_ a pull request
-happens, this looks **forward**: it is midnight, here is the sky for the days
-ahead. An event is a reflex. A schedule is a forecast.
-
-## See it work right now
-
-No schedule needed to try it. The forecast is just a script:
-
-```bash
-python3 .claude/skills/sky-watch/scripts/skywatch.py
-```
-
-```
-  ☄  SKY WATCH — next 7 days, from 2026-07-19
-  ──────────────────────────────────────────────────────────────
-     ✓  Nothing flagged hazardous in the window.
-
-     Closest pass:  2019 NG2  on 2026-07-20
-        8,918,882 km  =  23.2× the Moon
-        ~40–90 m across, 49,775 km/h
-
-     40 close approaches total in the next 7 days.
-  ──────────────────────────────────────────────────────────────
-```
-
-Now make it a loop.
-
-## Run it
-
-### 1. Open it in Claude Code
-
-```bash
-git clone https://github.com/panaversity/agentfactory-labs.git
-cd agentfactory-labs/crash-course/loop-eng/sky-watch
-claude
-```
-
-Say **yes** when Claude asks whether you trust the folder — that switches on the
-pre-granted permission so the watch never stops to ask. Then try it once by hand:
-
-```
-what asteroids are coming this week?
-```
-
-It runs the `sky-watch` skill, calls NASA, and writes you a forward-looking
-watch — one plain paragraph, danger first or calm first. Prove it works before
-you schedule it.
-
-### More starter prompts
 
 You just ran the basic watch. Here are three more — each said the way you would
 ask a person, because the skill carries the detail so your words can stay plain:
